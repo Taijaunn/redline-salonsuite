@@ -20,7 +20,7 @@ Analyze the uploaded contract and return ONLY a raw JSON object (no markdown, no
     { "title": "Short title", "severity": "high or medium", "detail": "One sentence max.", "fix": "One sentence negotiation tip.", "section": "Section ref or null" }
   ],
   "attention": [
-    { "title": "Short title", "detail": "One sentence max.", "ask": "One question to ask the broker.", "section": "Section ref or null" }
+    { "title": "Short title", "detail": "One sentence max.", "ask": "One suggestion for your realtor to raise with the landlord.", "section": "Section ref or null" }
   ],
   "missing": [
     { "title": "Clause name", "detail": "One sentence why it matters." }
@@ -55,13 +55,14 @@ CRITICAL AREAS FOR SALON SUITE OWNERS:
 
 Keep ALL descriptions to ONE sentence. Be direct and specific. No filler.`;
 
-const EMAIL_PROMPT = `You are writing a professional but firm email from a prospective salon suite tenant to their broker/property manager. The tenant has had their lease reviewed and wants to address specific concerns before signing.
+const EMAIL_PROMPT = `You are writing a professional but firm email from a prospective salon suite tenant to their realtor. The tenant has had their lease reviewed and wants their realtor to address specific concerns with the landlord/property manager before the tenant signs.
 
 Write a concise, professional email that:
 - Opens with a polite greeting and states they've reviewed the lease
-- Lists each concern as a clear, numbered point with what they'd like clarified or changed
-- Maintains a collaborative tone (not adversarial) but is direct about what needs to change
-- Closes by requesting a meeting or call to discuss
+- Lists each concern as a clear, numbered point with suggestions for the realtor to raise with the landlord on the tenant's behalf
+- Frames items as requests for the realtor to negotiate or clarify with the landlord — not as direct demands to the landlord
+- Maintains a collaborative tone and acknowledges the realtor's role as advocate
+- Closes by requesting the realtor follow up with the landlord and report back
 - Is under 300 words total
 - Do NOT use brackets or placeholders — write it ready to send (use "Hi" as greeting)
 
@@ -299,7 +300,7 @@ function EmailComposer({ analysis }) {
           system: EMAIL_PROMPT,
           messages: [{
             role: "user",
-            content: `Write an email to the broker addressing these ${points.length} concerns from my lease review:\n\n${points.map((p, i) => `${i + 1}. ${p}`).join("\n")}`,
+            content: `Write an email to my realtor with suggestions for them to raise with the landlord, addressing these ${points.length} concerns from my lease review:\n\n${points.map((p, i) => `${i + 1}. ${p}`).join("\n")}`,
           }],
         }),
       });
@@ -333,7 +334,7 @@ function EmailComposer({ analysis }) {
         <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-blue-50 text-blue-600">
           <Mail className="h-3.5 w-3.5" />
         </div>
-        <span className="flex-1 text-sm font-medium text-zinc-800">Draft Email to Broker</span>
+        <span className="flex-1 text-sm font-medium text-zinc-800">Draft Email to Realtor</span>
         <ChevronDown className={`h-4 w-4 text-zinc-400 transition-transform duration-200 ${open ? "rotate-180" : ""}`} />
       </button>
 

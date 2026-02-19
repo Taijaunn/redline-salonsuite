@@ -8,11 +8,11 @@ AI-powered lease contract analysis tool built specifically for salon suite busin
 
 - **Contract Grading** — A-F grade with instant summary
 - **Red Flags** — High and medium severity issues with negotiation tips
-- **Needs Clarification** — Ambiguous clauses with questions to ask your landlord
+- **Needs Clarification** — Ambiguous clauses with suggestions for your realtor to raise
 - **Green Flags** — Protections that work in your favor
 - **Missing Clauses** — Important protections not included
 - **Financial Breakdown** — Rent, deposit, fees, escalation terms
-- **Email Generator** — Draft a professional email to your landlord with your concerns
+- **Email Generator** — Draft a professional email to your realtor with your concerns
 
 ## Quick Start
 
